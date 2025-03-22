@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Patch Download</title>
+    <style>
+        /* Gaya umum */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #1e1e1e;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin: 20px 0;
+            font-size: 2.5rem;
+            color: #00aaff;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #bbb;
+        }
+
+        /* Navigasi */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #222;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0, 170, 255, 0.5);
+        }
+
+        .navbar label {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            transition: 0.3s;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .navbar label:hover {
+            background-color: #00aaff;
+            box-shadow: 0 0 15px rgba(0, 170, 255, 0.8);
+        }
+
+        /* Kontainer Patch (dengan scroll) */
+        .patch-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            max-height: 600px; /* Maksimal tinggi sebelum scroll muncul */
+            overflow-y: auto; /* Scroll ke bawah jika konten melebihi batas */
+            width: 90%;
+            margin: auto;
+            border: 1px solid #00aaff;
+            border-radius: 10px;
+            background-color: #2a2a2a;
+            box-shadow: 0 0 15px rgba(0, 170, 255, 0.5);
+        }
+
+        /* Scrollbar Modern */
+        .patch-container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .patch-container::-webkit-scrollbar-track {
+            background: #2a2a2a;
+            border-radius: 5px;
+        }
+
+        .patch-container::-webkit-scrollbar-thumb {
+            background: #00aaff;
+            border-radius: 5px;
+        }
+
+        .patch-container::-webkit-scrollbar-thumb:hover {
+            background: #0088cc;
+        }
+
+        /* Patch Card */
+        .patch {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .patch:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.8);
+        }
+
+        .patch h2 {
+            font-size: 1.5rem;
+            color: #00aaff;
+            margin-bottom: 10px;
+        }
+
+        .patch p {
+            font-size: 1rem;
+            color: #bbb;
+        }
+
+        /* Tombol Download */
+        .download-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #00aaff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
+        }
+
+        .download-btn:hover {
+            background-color: #0088cc;
+            box-shadow: 0 0 15px rgba(0, 170, 255, 1);
+        }
+
+        /* Halaman */
+        .page {
+            display: none;
+            padding: 20px;
+        }
+
+        /* Kontrol Tampilan Halaman dengan Radio Button */
+        #home-radio:checked ~ #home,
+        #patch-radio:checked ~ #patch,
+        #about-radio:checked ~ #about {
+            display: flex;
+        }
+
+        #patch-radio:checked ~ #patch {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Sembunyikan Radio Button */
+        input[type="radio"] {
+            display: none;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #111;
+            color: #bbb;
+            padding: 15px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+      .bdn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #00aaff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+            width: 160px;
+            box-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
+        }
+
+        .bdn:hover {
+            background-color: #0088cc;
+            box-shadow: 0 0 15px rgba(0, 170, 255, 1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Radio Button untuk Kontrol Halaman -->
+    <input type="radio" name="page" id="home-radio" checked>
+    <input type="radio" name="page" id="patch-radio">
+    <input type="radio" name="page" id="about-radio">
+
+    <!-- Menu Navigasi -->
+    <div class="navbar">
+        <label for="home-radio">Home</label>
+        <label for="patch-radio">Patch</label>
+        <label for="about-radio">About</label>
+    </div>
+
+    <!-- Halaman Home -->
+    <div id="home" class="page" style="
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: calc(80vh - 100px);">
+      <img src="icon.png"/>
+        <h1>Selamat Datang di Minecraft Patch</h1>
+        <p>Temukan patch terbaru untuk pengalaman bermain lebih baik!</p>
+    </div>
+
+    <!-- Halaman Patch -->
+    <div id="patch" class="page patch-container">
+        <div class="patch">
+            <h2>Patch 1.21.60.10</h2>
+            <p>Patch terbaru dengan fitur baru dan perbaikan bug.</p>
+            <a href="https:\/\/drive.google.com\/file\/d\/1CnQZjIRcIDMEz4H5AfWnSbKIWzK24KZf\/view?usp=drive_link" class="download-btn" onclick="https:\/\/drive.google.com\/file\/d\/1CnQZjIRcIDMEz4H5AfWnSbKIWzK24KZf\/view?usp=drive_link">Download</a>
+        </div>
+        
+        <div class="patch">
+            <h2>Patch 1.21.44</h2>
+            <p>Update besar dengan biome baru dan perbaikan performa.</p>
+            <a href="https://drive.google.com/file/d/1Ig0-98kEhb459GtGUihpmo-rMWVphwGj/view" class="download-btn" onclick="download(mcpe-1.21
+            .44)">Download</a>
+        </div>
+        
+        <div class="patch">
+            <h2>Patch 1.21.51</h2>
+            <p>Peningkatan grafis dan fitur gua serta gunung baru.</p>
+            <a href="https:\/\/drive.google.com\/file\/d\/1epvl6IDT3jdhUX7F63KUrNdpzxRV6OLF\/view?usp=drive_link" class="download-btn" onclick="https:\/\/drive.google.com\/file\/d\/1epvl6IDT3jdhUX7F63KUrNdpzxRV6OLF\/view?usp=drive_link">Download</a>
+        </div>
+    </div>
+
+    <!-- Halaman About -->
+    <div id="about" class="page" style="flex-direction: column;
+            justify-content: center;
+            align-items: center;">
+        <h1>Tentang Kami</h1>
+        <p>Website ini dibuat untuk menyediakan patch terbaru untuk Minecraft.</p>
+        <a href="https://saweria.co/Indrasgaming0masi"><button class="bdn">Donasi</button></a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Copyright © 2024 by Indra Syaputra. DaraXz-DaraSy. All Rights Reserved.</p>
+    </div>
+
+    <script>
+        function downloadPatch(file) {
+            let confirmDownload = confirm("Apakah Anda yakin ingin mengunduh " + file + "?");
+            if (confirmDownload) {
+                window.location.href = "download/" + file;
+            }
+        }
+    </script>
+
+</body>
+</html>
