@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minecraft Patch 1.21.101 - Anniversary DaraXz.IT</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0d0d0d;
+      color: #f2f2f2;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-top: 80px;
+      color: #00ffcc;
+      text-shadow: 0 0 20px #00ffcc;
+    }
+
+    .subtitle {
+      color: #ffcc00;
+      margin-bottom: 20px;
+    }
+
+    .download-btn {
+      background: #00ffcc;
+      color: #0d0d0d;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 15px #00ffcc;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .download-btn:hover {
+      background: #00cc99;
+      box-shadow: 0 0 30px #00ffcc;
+    }
+
+    /* Popup notif */
+    #popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 400px;
+      background: #1a1a1a;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00ffcc;
+      display: none;
+      z-index: 1000;
+      text-align: center;
+    }
+
+    #popup button {
+      margin-top: 15px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 6px;
+      background: #00ffcc;
+      color: #0d0d0d;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    #popup button:hover {
+      background: #00cc99;
+    }
+
+    /* Kata-kata di background */
+    .bg-text {
+      margin: 50px auto;
+      max-width: 800px;
+      font-size: 1rem;
+      color: #cccccc;
+      opacity: 0.85;
+      line-height: 1.8;
+    }
+
+    /* Balon animasi */
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 50px;
+      height: 70px;
+      background: red;
+      border-radius: 50%;
+      animation: float 8s infinite ease-in;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 50px;
+      background: #fff;
+      top: 70px;
+      left: 24px;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1);}
+      100% { transform: translateY(-120vh) scale(1.2);}
+    }
+
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: yellow;
+      top: -10px;
+      animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg);}
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Minecraft Patch 1.21.101 🎉</h1>
+  <p class="subtitle">Spesial Anniversary DaraXz.IT</p>
+
+  <!-- Kata-kata di background -->
+  <div class="bg-text">
+    <p>
+      Perjalanan bukan tentang seberapa cepat kita sampai,<br>
+      tapi bagaimana kita tumbuh bersama di setiap langkahnya.<br><br>
+      Anniversary ini adalah bukti bahwa <b>DaraXz.IT</b><br>
+      terus melangkah maju, berinovasi, dan berkarya.<br><br>
+      Terima kasih sudah menjadi bagian dari perjalanan ini.<br>
+      Mari kita rayakan, dan bersiap untuk masa depan yang lebih besar 🚀
+    </p>
+  </div>
+
+  <a href="https://drive.google.com/file/d/1X5GJqeZxRX-xa82092ZGH683RzaM0vHN/view?pli=1" class="download-btn">⬇ Download Patch</a>
+
+  <!-- Popup -->
+  <div id="popup">
+    🎉 Terima kasih telah menggunakan website kami! <br> by <b>DaraXz</b><br>
+    <button onclick="closePopup()">OK</button>
+  </div>
+
+  <!-- Balon -->
+  <div class="balloon" style="left:10%; background:#ff4444;"></div>
+  <div class="balloon" style="left:40%; background:#44ff44; animation-delay:2s;"></div>
+  <div class="balloon" style="left:70%; background:#4444ff; animation-delay:4s;"></div>
+
+  <script>
+    // Munculin popup pas load
+    window.onload = () => {
+      let popup = document.getElementById("popup");
+      popup.style.display = "block";
+
+      // Generate confetti
+      for (let i = 0; i < 40; i++) {
+        let confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.background = `hsl(${Math.random() * 360},100%,50%)`;
+        confetti.style.animationDuration = (2 + Math.random() * 3) + "s";
+        document.body.appendChild(confetti);
+      }
+    };
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+</body>
+</html>
